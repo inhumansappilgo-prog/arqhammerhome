@@ -6,301 +6,151 @@
   <meta name="theme-color" content="#050000">
   <meta name="description" content="Terminal de acesso aos arquivos classificados do Protocolo Axial.">
   <title>H.A.M.M.E.R. | PROTOCOLO AXIAL</title>
-
   <link rel="stylesheet" href="axial-os.css">
   <script src="axial-os.js" defer></script>
 
-  <style id="axial-countdown-style">
+  <style id="axial-compact-countdown-style">
     /* ==========================================================
-       CRONOGRAMA AXIAL // CONTAGEM REGRESSIVA
-       Bloco autônomo para funcionar sem alterar axial-os.css
+       CONTAGEM REGRESSIVA COMPACTA — TERRA AXIAL
+       Inserida sem alterar a estrutura original da página.
        ========================================================== */
 
-    .countdown-sector {
-      position: relative;
+    .axial-countdown {
       width: min(1180px, calc(100% - 32px));
-      margin: 26px auto 30px;
-      padding: 18px;
-      border: 1px solid rgba(199, 26, 50, .68);
-      background:
-        linear-gradient(180deg, rgba(199, 26, 50, .07), rgba(5, 0, 0, .88)),
-        repeating-linear-gradient(
-          90deg,
-          rgba(255, 255, 255, .025) 0,
-          rgba(255, 255, 255, .025) 1px,
-          transparent 1px,
-          transparent 78px
-        );
-      box-shadow:
-        0 0 0 1px rgba(255, 255, 255, .025) inset,
-        0 0 28px rgba(199, 26, 50, .12);
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    .countdown-sector::before,
-    .countdown-sector::after {
-      content: "";
-      position: absolute;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .countdown-sector::before {
-      inset: 0;
-      background:
-        linear-gradient(90deg, transparent, rgba(199, 26, 50, .08), transparent);
-      transform: translateX(-100%);
-      animation: countdownSweep 7s linear infinite;
-    }
-
-    .countdown-sector::after {
-      width: 190px;
-      height: 190px;
-      right: -95px;
-      top: -95px;
-      border: 1px solid rgba(199, 26, 50, .25);
-      transform: rotate(45deg);
-    }
-
-    @keyframes countdownSweep {
-      to { transform: translateX(100%); }
-    }
-
-    .countdown-topline {
+      margin: 14px auto 4px;
       display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 20px;
-      margin-bottom: 18px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid rgba(199, 26, 50, .32);
-    }
-
-    .countdown-kicker,
-    .countdown-status,
-    .countdown-label,
-    .countdown-meta,
-    .countdown-stage,
-    .countdown-progress-labels {
-      font-family: "Share Tech Mono", "Courier New", monospace;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-    }
-
-    .countdown-kicker {
-      margin: 0 0 5px;
-      color: #c71a32;
-      font-size: .75rem;
-    }
-
-    .countdown-title {
-      margin: 0;
-      color: #f4f4f4;
-      font-family: "Oxanium", "Arial Narrow", sans-serif;
-      font-size: clamp(1.15rem, 2.4vw, 2rem);
-      line-height: 1;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-    }
-
-    .countdown-status {
-      flex: 0 0 auto;
-      display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px 10px;
-      border: 1px solid rgba(199, 26, 50, .58);
-      background: rgba(199, 26, 50, .08);
-      color: #f4f4f4;
-      font-size: .7rem;
-      white-space: nowrap;
-    }
-
-    .countdown-status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #c71a32;
-      box-shadow: 0 0 9px rgba(199, 26, 50, .95);
-      animation: countdownPulse 1.15s steps(2, end) infinite;
-    }
-
-    @keyframes countdownPulse {
-      50% { opacity: .28; }
-    }
-
-    .countdown-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .countdown-unit {
-      position: relative;
-      min-height: 104px;
-      display: grid;
-      align-content: center;
-      justify-items: center;
-      padding: 14px 8px 12px;
-      border: 1px solid rgba(199, 26, 50, .3);
+      justify-content: space-between;
+      gap: 18px;
+      padding: 10px 14px;
+      border: 1px solid rgba(199, 26, 50, .48);
+      border-left: 3px solid #c71a32;
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, .025), transparent),
-        rgba(0, 0, 0, .36);
-      box-shadow: 0 0 0 1px rgba(255, 255, 255, .018) inset;
-    }
-
-    .countdown-unit::before {
-      content: attr(data-index);
-      position: absolute;
-      left: 7px;
-      top: 6px;
-      color: rgba(244, 244, 244, .28);
-      font: .58rem/1 "Share Tech Mono", monospace;
-      letter-spacing: .12em;
-    }
-
-    .countdown-value {
+        linear-gradient(90deg, rgba(199, 26, 50, .08), rgba(5, 0, 0, .72)),
+        rgba(0, 0, 0, .32);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, .02) inset,
+        0 0 16px rgba(199, 26, 50, .08);
       color: #f4f4f4;
       font-family: "Share Tech Mono", "Courier New", monospace;
-      font-size: clamp(2rem, 6vw, 4.6rem);
-      line-height: .9;
-      font-variant-numeric: tabular-nums;
-      text-shadow:
-        2px 0 rgba(199, 26, 50, .28),
-        -1px 0 rgba(255, 255, 255, .08);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      box-sizing: border-box;
     }
 
-    .countdown-label {
-      margin-top: 10px;
-      color: rgba(244, 244, 244, .62);
-      font-size: .65rem;
+    .axial-countdown__info {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
     }
 
-    .countdown-meta {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 9px 18px;
-      margin-top: 15px;
-      padding: 13px 14px;
-      border-left: 3px solid #c71a32;
-      background: rgba(0, 0, 0, .31);
-      color: rgba(244, 244, 244, .72);
-      font-size: .68rem;
-      line-height: 1.55;
+    .axial-countdown__label {
+      color: #c71a32;
+      font-size: .64rem;
+      line-height: 1.2;
     }
 
-    .countdown-meta strong {
+    .axial-countdown__date {
+      color: rgba(244, 244, 244, .66);
+      font-size: .58rem;
+      line-height: 1.35;
+      white-space: normal;
+    }
+
+    .axial-countdown__date strong {
       color: #f4f4f4;
       font-weight: 500;
     }
 
-    .countdown-timeline {
-      margin-top: 16px;
-    }
-
-    .countdown-progress {
-      position: relative;
-      height: 6px;
-      margin: 12px 0 7px;
-      border: 1px solid rgba(199, 26, 50, .42);
-      background: rgba(0, 0, 0, .58);
-      overflow: hidden;
-    }
-
-    .countdown-progress-bar {
-      display: block;
-      width: 0;
-      height: 100%;
-      background:
-        repeating-linear-gradient(
-          90deg,
-          #c71a32 0,
-          #c71a32 16px,
-          #7d101f 16px,
-          #7d101f 19px
-        );
-      box-shadow: 0 0 14px rgba(199, 26, 50, .42);
-      transition: width .7s ease;
-    }
-
-    .countdown-progress-labels {
+    .axial-countdown__timer {
+      flex: 0 0 auto;
       display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      color: rgba(244, 244, 244, .42);
-      font-size: .57rem;
+      align-items: center;
+      gap: 5px;
+      font-variant-numeric: tabular-nums;
     }
 
-    .countdown-stage {
-      margin: 12px 0 0;
+    .axial-countdown__unit {
+      min-width: 46px;
+      padding: 6px 7px 5px;
+      border: 1px solid rgba(199, 26, 50, .32);
+      background: rgba(0, 0, 0, .34);
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .axial-countdown__value {
+      display: block;
+      color: #f4f4f4;
+      font-size: 1rem;
+      line-height: 1;
+      text-shadow: 1px 0 rgba(199, 26, 50, .45);
+    }
+
+    .axial-countdown__name {
+      display: block;
+      margin-top: 4px;
+      color: rgba(244, 244, 244, .48);
+      font-size: .45rem;
+      line-height: 1;
+    }
+
+    .axial-countdown__separator {
       color: #c71a32;
-      font-size: .68rem;
+      font-size: .82rem;
+      animation: axialCountdownBlink 1s steps(2, end) infinite;
     }
 
-    .countdown-sector.is-released {
-      border-color: rgba(76, 175, 80, .72);
-      box-shadow: 0 0 30px rgba(76, 175, 80, .12);
+    .axial-countdown.is-open {
+      border-color: rgba(76, 175, 80, .55);
+      border-left-color: #4caf50;
     }
 
-    .countdown-sector.is-released .countdown-status,
-    .countdown-sector.is-released .countdown-unit {
-      border-color: rgba(76, 175, 80, .52);
-    }
-
-    .countdown-sector.is-released .countdown-status-dot,
-    .countdown-sector.is-released .countdown-progress-bar {
-      background: #4caf50;
-      box-shadow: 0 0 12px rgba(76, 175, 80, .72);
-    }
-
-    .countdown-sector.is-released .countdown-stage,
-    .countdown-sector.is-released .countdown-kicker {
+    .axial-countdown.is-open .axial-countdown__label,
+    .axial-countdown.is-open .axial-countdown__separator {
       color: #4caf50;
     }
 
-    @media (max-width: 760px) {
-      .countdown-sector {
-        width: min(100% - 20px, 1180px);
-        margin-top: 16px;
-        padding: 13px;
-      }
+    .axial-countdown.is-open .axial-countdown__unit {
+      border-color: rgba(76, 175, 80, .35);
+    }
 
-      .countdown-topline {
+    @keyframes axialCountdownBlink {
+      50% { opacity: .25; }
+    }
+
+    @media (max-width: 700px) {
+      .axial-countdown {
+        width: min(100% - 20px, 1180px);
         flex-direction: column;
         align-items: stretch;
+        gap: 9px;
+        padding: 10px;
       }
 
-      .countdown-status {
-        align-self: flex-start;
+      .axial-countdown__timer {
+        justify-content: space-between;
+        gap: 4px;
       }
 
-      .countdown-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .axial-countdown__unit {
+        min-width: 0;
+        flex: 1 1 0;
       }
 
-      .countdown-unit {
-        min-height: 88px;
-      }
-
-      .countdown-meta {
-        grid-template-columns: 1fr;
+      .axial-countdown__separator {
+        display: none;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .countdown-sector::before,
-      .countdown-status-dot {
+      .axial-countdown__separator {
         animation: none;
-      }
-
-      .countdown-progress-bar {
-        transition: none;
       }
     }
   </style>
 </head>
-
 <body>
   <div class="screen-noise" aria-hidden="true"></div>
   <div class="screen-vignette" aria-hidden="true"></div>
@@ -323,84 +173,57 @@
       </div>
     </header>
 
+    <!-- CONTAGEM REGRESSIVA COMPACTA -->
     <section
-      class="countdown-sector"
+      class="axial-countdown"
       id="axial-countdown"
-      aria-labelledby="countdown-title"
+      aria-label="Contagem regressiva para a abertura do Protocolo Axial"
       aria-live="polite"
     >
-      <div class="countdown-topline">
-        <div>
-          <p class="countdown-kicker">&gt; CONTAGEM ATÉ O EVENTO BRANCO // CICLO 12</p>
-          <h2 class="countdown-title" id="countdown-title">Protocolo de Liberação</h2>
-        </div>
-
-        <div class="countdown-status">
-          <span class="countdown-status-dot" aria-hidden="true"></span>
-          <span id="countdown-status-text">JANELA SELADA</span>
-        </div>
-      </div>
-
-      <div class="countdown-grid" aria-label="Contagem regressiva">
-        <div class="countdown-unit" data-index="D-">
-          <strong class="countdown-value" id="countdown-days">000</strong>
-          <span class="countdown-label">Dias</span>
-        </div>
-
-        <div class="countdown-unit" data-index="H-">
-          <strong class="countdown-value" id="countdown-hours">00</strong>
-          <span class="countdown-label">Horas</span>
-        </div>
-
-        <div class="countdown-unit" data-index="M-">
-          <strong class="countdown-value" id="countdown-minutes">00</strong>
-          <span class="countdown-label">Minutos</span>
-        </div>
-
-        <div class="countdown-unit" data-index="S-">
-          <strong class="countdown-value" id="countdown-seconds">00</strong>
-          <span class="countdown-label">Segundos</span>
-        </div>
-      </div>
-
-      <div class="countdown-meta">
-        <span>
-          <strong>MARCO OFICIAL:</strong>
-          <time datetime="2026-08-07T20:00:00-03:00">07/08/2026 — 20:00 // BRASÍLIA</time>
+      <div class="axial-countdown__info">
+        <span class="axial-countdown__label" id="axial-countdown-status">
+          &gt; CRONOGRAMA DE ABERTURA // JANELA SELADA
         </span>
 
-        <span>
-          <strong>EXIBIÇÃO LOCAL:</strong>
-          <time id="countdown-local-date">SINCRONIZANDO...</time>
-        </span>
-
-        <span>
-          <strong>FUSO DETECTADO:</strong>
-          <span id="countdown-timezone">IDENTIFICANDO...</span>
-        </span>
-
-        <span>
-          <strong>SINCRONIA:</strong>
-          <span id="countdown-sync">RELÓGIO DO TERMINAL</span>
+        <span class="axial-countdown__date">
+          MARCO OFICIAL:
+          <strong>07/08/2026 — 20:00 // BRASÍLIA</strong>
+          &nbsp;|&nbsp;
+          HORÁRIO LOCAL:
+          <strong id="axial-countdown-local-date">SINCRONIZANDO...</strong>
+          &nbsp;|&nbsp;
+          FUSO:
+          <strong id="axial-countdown-timezone">DETECTANDO...</strong>
         </span>
       </div>
 
-      <div class="countdown-timeline" aria-hidden="true">
-        <div class="countdown-progress">
-          <span class="countdown-progress-bar" id="countdown-progress-bar"></span>
-        </div>
+      <div class="axial-countdown__timer" aria-label="Tempo restante">
+        <span class="axial-countdown__unit">
+          <strong class="axial-countdown__value" id="axial-days">000</strong>
+          <small class="axial-countdown__name">Dias</small>
+        </span>
 
-        <div class="countdown-progress-labels">
-          <span>T−365D // RASTREIO</span>
-          <span>T−30D // ALERTA</span>
-          <span>T−7D // CONTENÇÃO</span>
-          <span>T−0 // ABERTURA</span>
-        </div>
+        <span class="axial-countdown__separator" aria-hidden="true">:</span>
+
+        <span class="axial-countdown__unit">
+          <strong class="axial-countdown__value" id="axial-hours">00</strong>
+          <small class="axial-countdown__name">Horas</small>
+        </span>
+
+        <span class="axial-countdown__separator" aria-hidden="true">:</span>
+
+        <span class="axial-countdown__unit">
+          <strong class="axial-countdown__value" id="axial-minutes">00</strong>
+          <small class="axial-countdown__name">Min</small>
+        </span>
+
+        <span class="axial-countdown__separator" aria-hidden="true">:</span>
+
+        <span class="axial-countdown__unit">
+          <strong class="axial-countdown__value" id="axial-seconds">00</strong>
+          <small class="axial-countdown__name">Seg</small>
+        </span>
       </div>
-
-      <p class="countdown-stage" id="countdown-stage">
-        &gt; FASE ATUAL: RASTREIO TEMPORAL
-      </p>
     </section>
 
     <main class="dossier-container" aria-label="Diretório de arquivos H.A.M.M.E.R.">
@@ -444,118 +267,71 @@
     </footer>
   </div>
 
-  <script>
+  <script id="axial-compact-countdown-script">
     (() => {
       "use strict";
 
       /*
-       * MARCO OFICIAL:
-       * 07 de agosto de 2026, às 20h, em Brasília (UTC−3).
+       * Instante oficial:
+       * 07/08/2026 às 20:00 no horário de Brasília (UTC−3).
        *
-       * O instante é fixo. O navegador converte automaticamente
-       * a exibição para o fuso horário do computador do visitante.
+       * O navegador converte a exibição para o fuso horário
+       * configurado no computador do visitante.
        */
-      const EVENT_DATE = new Date("2026-08-07T20:00:00-03:00");
-      const EVENT_TIME = EVENT_DATE.getTime();
+      const eventDate = new Date("2026-08-07T20:00:00-03:00");
+      const eventTime = eventDate.getTime();
 
-      /*
-       * Janela usada apenas para o preenchimento visual da barra.
-       * O contador principal permanece exato independentemente dela.
-       */
-      const PROGRESS_START = new Date("2025-08-07T20:00:00-03:00").getTime();
-      const PROGRESS_DURATION = EVENT_TIME - PROGRESS_START;
+      const countdown = document.getElementById("axial-countdown");
+      const status = document.getElementById("axial-countdown-status");
+      const localDate = document.getElementById("axial-countdown-local-date");
+      const timezone = document.getElementById("axial-countdown-timezone");
 
-      const sector = document.getElementById("axial-countdown");
-      const daysEl = document.getElementById("countdown-days");
-      const hoursEl = document.getElementById("countdown-hours");
-      const minutesEl = document.getElementById("countdown-minutes");
-      const secondsEl = document.getElementById("countdown-seconds");
-      const localDateEl = document.getElementById("countdown-local-date");
-      const timezoneEl = document.getElementById("countdown-timezone");
-      const syncEl = document.getElementById("countdown-sync");
-      const statusEl = document.getElementById("countdown-status-text");
-      const stageEl = document.getElementById("countdown-stage");
-      const progressBar = document.getElementById("countdown-progress-bar");
+      const days = document.getElementById("axial-days");
+      const hours = document.getElementById("axial-hours");
+      const minutes = document.getElementById("axial-minutes");
+      const seconds = document.getElementById("axial-seconds");
 
       const pad = (value, size = 2) => String(value).padStart(size, "0");
 
-      const timezone =
+      const detectedTimezone =
         Intl.DateTimeFormat().resolvedOptions().timeZone ||
-        "FUSO LOCAL NÃO IDENTIFICADO";
+        "FUSO LOCAL";
 
       const localFormatter = new Intl.DateTimeFormat("pt-BR", {
-        dateStyle: "full",
+        dateStyle: "short",
         timeStyle: "short"
       });
 
-      localDateEl.textContent = localFormatter.format(EVENT_DATE);
-      localDateEl.setAttribute("datetime", EVENT_DATE.toISOString());
-      timezoneEl.textContent = timezone;
-      syncEl.textContent = `UTC${formatOffset(EVENT_DATE)}`;
+      localDate.textContent = localFormatter.format(eventDate);
+      timezone.textContent = detectedTimezone;
 
-      function formatOffset(date) {
-        const offsetMinutes = -date.getTimezoneOffset();
-        const sign = offsetMinutes >= 0 ? "+" : "−";
-        const absolute = Math.abs(offsetMinutes);
-        const hours = Math.floor(absolute / 60);
-        const minutes = absolute % 60;
-        return `${sign}${pad(hours)}:${pad(minutes)}`;
-      }
-
-      function setStage(remaining) {
-        const day = 24 * 60 * 60 * 1000;
-
-        if (remaining <= 0) {
-          stageEl.textContent = "> FASE ATUAL: PROTOCOLO LIBERADO";
-          statusEl.textContent = "JANELA DE ACESSO ABERTA";
-          sector.classList.add("is-released");
-          return;
-        }
-
-        sector.classList.remove("is-released");
-        statusEl.textContent = "JANELA SELADA";
-
-        if (remaining <= day) {
-          stageEl.textContent = "> FASE ATUAL: T−24H // ALERTA TERMINAL";
-        } else if (remaining <= 7 * day) {
-          stageEl.textContent = "> FASE ATUAL: T−7D // CONTENÇÃO MÁXIMA";
-        } else if (remaining <= 30 * day) {
-          stageEl.textContent = "> FASE ATUAL: T−30D // ALERTA VERMELHO";
-        } else {
-          stageEl.textContent = "> FASE ATUAL: RASTREIO TEMPORAL";
-        }
-      }
-
-      function updateProgress(now) {
-        const elapsed = now - PROGRESS_START;
-        const progress = Math.min(1, Math.max(0, elapsed / PROGRESS_DURATION));
-        progressBar.style.width = `${(progress * 100).toFixed(3)}%`;
-      }
+      let timer = null;
 
       function updateCountdown() {
-        const now = Date.now();
-        const remaining = Math.max(0, EVENT_TIME - now);
+        const remaining = Math.max(0, eventTime - Date.now());
 
-        const days = Math.floor(remaining / 86400000);
-        const hours = Math.floor((remaining % 86400000) / 3600000);
-        const minutes = Math.floor((remaining % 3600000) / 60000);
-        const seconds = Math.floor((remaining % 60000) / 1000);
+        const remainingDays = Math.floor(remaining / 86400000);
+        const remainingHours = Math.floor((remaining % 86400000) / 3600000);
+        const remainingMinutes = Math.floor((remaining % 3600000) / 60000);
+        const remainingSeconds = Math.floor((remaining % 60000) / 1000);
 
-        daysEl.textContent = pad(days, 3);
-        hoursEl.textContent = pad(hours);
-        minutesEl.textContent = pad(minutes);
-        secondsEl.textContent = pad(seconds);
-
-        setStage(remaining);
-        updateProgress(now);
+        days.textContent = pad(remainingDays, 3);
+        hours.textContent = pad(remainingHours);
+        minutes.textContent = pad(remainingMinutes);
+        seconds.textContent = pad(remainingSeconds);
 
         if (remaining <= 0) {
-          clearInterval(timer);
+          countdown.classList.add("is-open");
+          status.textContent = "> CRONOGRAMA DE ABERTURA // ACESSO LIBERADO";
+
+          if (timer) {
+            window.clearInterval(timer);
+          }
         }
       }
 
       updateCountdown();
-      const timer = window.setInterval(updateCountdown, 1000);
+      timer = window.setInterval(updateCountdown, 1000);
     })();
   </script>
 </body>
